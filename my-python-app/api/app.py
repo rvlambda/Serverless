@@ -6,7 +6,8 @@ app = Flask(__name__)
 
 # Load JSON data from file
 try:
-    with open('.\q-vercel-python.json','r') as f:
+    
+    with open('../q-vercel-python.json','r') as f:
         data = json.load(f)
 except Exception as e:
     print(f"Error loading JSON: {e}")
