@@ -1,0 +1,47 @@
+# This workflow will triage pull requests and apply a label based on the
+# paths that are modified in the pull request.
+#
+# To use this workflow, you will need to set up a .github/labeler.yml
+# file with configuration.  For more information, see:
+# https://github.com/actions/labeler
+
+name: First_Action
+on:
+   push:
+       branches: [main]
+   pull_request:
+       branches: [main]
+
+jobs:
+  First-Github-Action:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+    - name: 22f2001532@ds.study.iitm.ac.in
+      uses: actions/checkout@v2
+    - name: Set up Python 
+      uses: actions/setup-python@v2 
+      with: 
+           python-version: '3.x' 
+      
+    - name: Install dependencies 
+      run: | 
+          python -m venv venv
+          source venv/bin/activate
+          python -m pip install --upgrade pip 
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi 
+
+    - name: Verify Flask Installation
+      run: |
+         source venv/bin/activate
+         python -c "import flask; print('Flask Version:',flask   .__version__)"
+         
+    - name: Run script 
+      run:
+          source venv/bin/activate
+          python my-python-app/app.py      
+        
