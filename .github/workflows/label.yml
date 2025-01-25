@@ -30,9 +30,18 @@ jobs:
       
     - name: Install dependencies 
       run: | 
+          python -m venv venv
+          source venv/bin/activate
           python -m pip install --upgrade pip 
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi 
-    
+
+    - name: Verify Flask Installation
+      run: |
+         source venv/bin/activate
+         python -c "import flask; print('Flask Version:',flask   .__version__)"
+         
     - name: Run script 
-      run: python my-python-app/app.py      
+      run:
+          source venv/bin/activate
+          python my-python-app/app.py      
         
