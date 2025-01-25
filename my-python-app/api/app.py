@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import json
 import traceback
 
 app = Flask(__name__)
+CORS(app)
 
 # Load JSON data from file
 try:
