@@ -6,13 +6,13 @@ app = Flask(__name__)
 
 # Load JSON data from file
 try:
-    with open('q-vercel-python.json','r') as f:
+    with open('.\q-vercel-python.json','r') as f:
         data = json.load(f)
 except Exception as e:
     print(f"Error loading JSON: {e}")
 
 #@app.route('/get_marks', methods=['GET'])
-@app.route('/app', methods=['GET'])
+@app.route('/api', methods=['GET'])
 def get_marks():
     names = request.args.getlist('name')
     if not names:
